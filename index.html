@@ -1,0 +1,57 @@
+<script type="importmap">
+  {
+    "imports": {
+      "@google/genai": "https://esm.sh/@google/genai@^0.7.0",
+      "pdfjs-dist": "https://esm.sh/pdfjs-dist@4.4.168"
+    }
+  }
+  </script>
+  <!-- Add Google Fonts Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <div class="container">
+    <header>
+      <h1>Prepzy</h1>
+      <p>
+        Supercharge your study sessions. Generate quizzes and flashcards instantly from your PDF documents.
+      </p>
+    </header>
+
+    <!-- PDF Upload Section -->
+    <section id="pdfUploadSection" class="upload-section">
+      <input type="file" id="pdfUpload" multiple accept=".pdf" style="display: none;" />
+      <label for="pdfUpload" id="pdfUploadLabel" class="button-like">
+        Click to upload or drag & drop PDFs here
+      </label>
+      <div id="pdfFileList" class="file-list"></div>
+    </section>
+
+    <!-- Generation Controls -->
+    <section class="generation-controls">
+      <!-- Output Mode Tabs -->
+      <div class="output-tabs">
+        <button id="quizTab" class="tab-button active" role="tab" aria-selected="true" aria-controls="quizPanel">Quiz</button>
+        <button id="flashcardsTab" class="tab-button" role="tab" aria-selected="false" aria-controls="flashcardsPanel">Flashcards</button>
+      </div>
+      <button id="generateButton">Generate Quiz</button>
+    </section>
+
+    <div id="errorMessage" class="error-message"></div>
+
+    <!-- Output Panels -->
+    <main class="output-panels">
+      <div id="quizPanel" class="output-panel active" role="tabpanel" aria-labelledby="quizTab">
+        <div id="quizContainer" class="quiz-container"></div>
+        <div id="quizActions" class="quiz-actions" style="display: none;">
+          <button id="checkAnswersButton">Check Answers</button>
+          <div id="quizResult" class="quiz-result"></div>
+        </div>
+      </div>
+      <div id="flashcardsPanel" class="output-panel" role="tabpanel" aria-labelledby="flashcardsTab">
+        <div id="flashcardsContainer" class="flashcards-container"></div>
+      </div>
+    </main>
+  </div><link rel="stylesheet" href="/index.css">
+<script type="module" src="/index.tsx"></script>
