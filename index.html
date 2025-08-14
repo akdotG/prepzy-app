@@ -1,0 +1,78 @@
+
+<script type="importmap">
+  {
+    "imports": {
+      "@google/genai": "https://esm.sh/@google/genai@^0.12.0",
+      "pdfjs-dist": "https://esm.sh/pdfjs-dist@4.3.136"
+    }
+  }
+</script>
+<!-- Add Google Fonts Link -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<div id="loader-overlay" class="loader-overlay" style="display: none;">
+  <div class="loader-content">
+    <div class="spinner"></div>
+    <p id="loader-message">Processing...</p>
+  </div>
+</div>
+
+<div class="container">
+  <header class="app-header">
+    <h1>Prepzy</h1>
+    <button id="backButton" class="back-button" style="display: none;">&larr; Back</button>
+  </header>
+
+  <!-- View 1: Upload View -->
+  <div id="upload-view" style="display: none;">
+    <p>Upload a document (PDF, PNG, JPG, etc.) to start your personalized learning session.</p>
+    <input type="file" id="file-input" accept="image/*,.pdf" style="display: none;">
+    <label for="file-input" class="file-label">Select Document</label>
+    <div id="error-message" class="error-message"></div>
+  </div>
+
+  <!-- View 2: Mode Selection View -->
+  <div id="mode-select-view" style="display: none;">
+    <p>Your document is ready! Choose how you'd like to study.</p>
+    <div class="mode-buttons">
+      <button id="quiz-mode-btn" class="mode-button">Quiz Me</button>
+      <button id="subjective-mode-btn" class="mode-button">Subjective Questions</button>
+      <button id="flashcard-mode-btn" class="mode-button">Make Flashcards</button>
+    </div>
+  </div>
+
+  <!-- View 3: Quiz View -->
+  <div id="quiz-view" style="display: none;">
+    <div id="quiz-progress" class="quiz-progress"></div>
+    <div id="quiz-question-container">
+      <h2 id="quiz-question"></h2>
+      <div id="quiz-options" class="quiz-options"></div>
+    </div>
+    <div id="quiz-feedback" class="quiz-feedback"></div>
+    <button id="next-question-btn" style="display: none;">Next</button>
+    <div id="quiz-results" style="display: none;">
+      <h2>Quiz Complete!</h2>
+      <p id="quiz-score"></p>
+      <button id="restart-quiz-btn">Try Again</button>
+    </div>
+  </div>
+
+  <!-- View 4: Subjective View -->
+  <div id="subjective-view" style="display: none;">
+     <div id="subjective-question-container">
+        <!-- Questions will be dynamically inserted here -->
+     </div>
+     <button id="next-subjective-btn" style="display: none;">Next Question</button>
+  </div>
+
+  <!-- View 5: Flashcard View -->
+  <div id="flashcard-view" class="flashcards-container" style="display: none;">
+    <!-- Flashcards will be generated here -->
+  </div>
+</div>
+
+<script type="module" src="index.tsx"></script>
+    <link rel="stylesheet" href="/index.css">
+<script type="module" src="/index.tsx"></script>
