@@ -75,18 +75,22 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 const views = [uploadView, modeSelectView, quizView, subjectiveView, flashcardView];
 function showView(viewToShow: HTMLElement) {
   views.forEach(view => {
-    view.style.display = view === viewToShow ? 'flex' : 'none';
+    if (view === viewToShow) {
+        view.style.display = 'flex';
+        // Most views are vertical lists of controls, but flashcards wrap horizontally.
+        if (view !== flashcardView) {
+            view.style.flexDirection = 'column';
+            view.style.alignItems = 'center';
+        }
+    } else {
+        view.style.display = 'none';
+    }
   });
+
   if (viewToShow !== uploadView) {
       backButton.style.display = 'block';
   } else {
       backButton.style.display = 'none';
-  }
-  // Special case for flashcards container
-  if(viewToShow === flashcardView) {
-      flashcardView.style.display = 'flex';
-  } else if (viewToShow !== subjectiveView) {
-      subjectiveView.style.display = 'none';
   }
 }
 
